@@ -20,7 +20,7 @@
 6. Конец
 ```
 ### Блок-схема
-![Image alt](shema6.png)
+![Image alt](shema6.drawio.png)
 ## 2. Реализация программы
 ```
 #define _CRT_SECURE_NO_WARNINGS
