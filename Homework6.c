@@ -2,26 +2,38 @@
 #include <stdio.h>
 #include <locale.h>
 
-int main() 
+int check(double x, double y);
+
+int main()
 {
     setlocale(LC_ALL, "RUS");
-    int N, sum;
+    double x, y;
+    int n;
+    do
+    {
+        printf("Введите координаты x,y: ");
+        scanf("%lf %lf", &x, &y);
+        if (check(x, y))
+        {
+            printf("Точка принадлежит заданной области\n");
+        }
+        else
+        {
+            printf("Точка не принадлежит заданной области\n");
+        }
+        printf("Продолжить?(1-да, 0-нет):");
+        scanf("%d", &n);
+    } while (n == 1);
+}
 
-    printf("Введите число N (N < 1000): ");
-    if (scanf("%d", &N) != 1) {
-        printf("Ошибка: введено не число!\n");
+int check(double x, double y)
+{
+    if (x * x + y * y <= 4 && y >= x && x >= 0)
+    {
         return 1;
     }
-    if (N >= 1000 || N < 0) {
-        printf("Ошибка: N должно быть в диапазоне 0 <= N < 1000\n");
-        return 1;
+    else
+    {
+        return 0;
     }
-    sum = N % 10 + (N / 10) % 10 + N / 100;
-    if (sum >= 10 && sum <= 99) {
-        printf("Сумма цифр = %d — двузначное число\n", sum);
-    }
-    else {
-        printf("Сумма цифр = %d — не двузначное число\n", sum);
-    }
-    return 0;
 }
